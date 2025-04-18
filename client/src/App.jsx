@@ -34,7 +34,7 @@ function App() {
         <Form get={getData} />
         <BudgetTracker />
         </div>
-        <Lists ssh={lists} get={getData}/>
+        <Lists data={lists} get={getData}/>
       </div>
     </ListProvider>
   )

@@ -1,11 +1,12 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { TbCircleX } from 'react-icons/tb'
-import { BiEdit } from 'react-icons/bi'
+// import { TbCircleX } from 'react-icons/tb'
+// import { BiEdit } from 'react-icons/bi'
 import { useList } from '../context/Context.jsx'
 import { SERVER_URL } from '../helpers/Constants.js'
+// import { CiEdit } from "react-icons/ci";
 
-const Lists = ({ ssh, get }) => {
+const Lists = ({ data, get }) => {
     // State for tracking the item being edited
     const [editId, setEditId] = useState(null)
 
@@ -75,7 +76,7 @@ const Lists = ({ ssh, get }) => {
     }
     return (
         <div className='overflow-x-scroll h-[490px] scrollbar-hide'>
-            {ssh.length > 0 ? (ssh?.map((e) => (
+            {data.length > 0 ? (data?.map((e) => (
                 <div key={e._id} className={`flex border border-black/10 rounded-lg sm:px-3 sm:py-1.5 gap-x-3 lg:w-[67vw] md:w-[80vw] sm:w-[90vw] w-[95vw] h-12 sm:left-12 left-2 p-1.5 shadow-sm shadow-white/50 duration-300  text-black relative lg:top-8 md:top-15 sm:top-25 top-70 mb-2 ${(editId === e._id ? type : e.Type) === "Income" ? "bg-[#59e527]" : "bg-[#dd733e]"}`}>
 
                     {/* Input for Title */}
@@ -134,15 +135,15 @@ const Lists = ({ ssh, get }) => {
                      {/* Edit Button */}
                     <div className="text-center text-black font-medium sm:pt-1 sm:ml-3 bg-[#f0f4f9] sm:p-2 p-1 rounded-md sm:right-0 right-3">
                         {editId === e._id ? (
-                            <button onClick={updatedData} className="text-green-600 bg-white ">Save</button>
+                            <button onClick={updatedData} className="text-green-600 text-sm bg-white ">Save</button>
                         ) : (
-                            <BiEdit color='green' size={25} onClick={() => handleEditClick(e)} />
+                            <button className='text-green-400' onClick={() => handleEditClick(e)}>edit</button>                            
                         )}
                     </div>
 
                     {/* Delete Button */}
                     <div className="text-center text-black font-medium sm:pt-1 sm:ml-5 bg-[#f0f4f9] sm:p-2 p-1 rounded-md">
-                        <TbCircleX color='red' size={25} onClick={() => deletedData(e._id)} />
+                        <button onClick={() => deletedData(e._id)} className='text-red-500 w-6'>Del</button>
                     </div>
                 </div>
             )))

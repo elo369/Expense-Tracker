@@ -18,9 +18,12 @@ app.use(cors({
 }))
 app.use("/data",router)
 
-// app.get("/",(req,res)=>{
-//     res.send("hello world")
-// })
+app.get("/",(req,res)=>{
+    res.send({
+        activeStatus:true,
+        error:false
+    })
+})
 
 app.listen(PORT,()=>{
     console.log(`server running on port ${PORT}`)

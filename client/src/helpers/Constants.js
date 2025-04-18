@@ -1,1 +1,1 @@
-export const SERVER_URL = import.meta.env.VITE_SERVER_URL || "http://localhost:5000/data"
+export const SERVER_URL = import.meta.env.VITE_SERVER_URL || "https://expense-tracker-288d.vercel.app/data"
